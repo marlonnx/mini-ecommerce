@@ -1,5 +1,6 @@
 package com.example.ecommerce.domain.product;
 
+import com.example.ecommerce.domain.category.Category;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -38,6 +39,10 @@ public class Product {
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
     @Column()
     private List<String> images = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @Column(name = "created_at")
     @CreationTimestamp

@@ -19,6 +19,6 @@ public class OpenApiConfiguration {
                                         .scheme("bearer")
                                         .bearerFormat("JWT"))) // Optional: for documentation
                 // You can add global security requirements here if needed
-                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"));
     }
 }

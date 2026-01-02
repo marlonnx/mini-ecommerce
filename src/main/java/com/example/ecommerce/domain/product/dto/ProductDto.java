@@ -1,5 +1,7 @@
 package com.example.ecommerce.domain.product.dto;
 
+import com.example.ecommerce.domain.category.model.CategoryDto;
+
 import java.util.List;
 
 public record ProductDto(
@@ -8,6 +10,7 @@ public record ProductDto(
         String description,
         Integer quantity,
         List<String> images,
-        Double price
+        Double price,
+        CategoryDto category
 ) {
 }

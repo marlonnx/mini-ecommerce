@@ -1,5 +1,6 @@
 package com.example.ecommerce.domain.product;
 
+import com.example.ecommerce.domain.category.CategoryRepository;
 import com.example.ecommerce.domain.product.dto.CreateProductDto;
 import com.example.ecommerce.domain.product.dto.ProductDto;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
     final ProductRepository productRepository;
+    final CategoryRepository categoryRepository;
     final ModelMapper mapper;
 
 
@@ -38,6 +40,10 @@ public class ProductService {
                                         "https://picsum.photos/1280/720",
                                         "https://picsum.photos/1280/720"
                                 )
+                        )
+                        .category(
+                                categoryRepository.findById(productDto.categoryId())
+                                        .orElseThrow(() -> new EntityNotFoundException("Category not found"))
                         )
                         .build()
         );
